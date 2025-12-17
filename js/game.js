@@ -58,6 +58,10 @@ function getCurrentPuzzle() {
  */
 function getRevealedClues() {
   const puzzle = getCurrentPuzzle();
+  if (!puzzle) {
+    console.error('No puzzle found for ID:', gameState.currentPuzzleId);
+    return [];
+  }
   return puzzle.clues.slice(0, gameState.revealedCluesCount);
 }
 
@@ -72,6 +76,12 @@ function updateCluesDisplay() {
   const cluesContainer = document.getElementById('clues-container');
   const clueCount = document.getElementById('clue-count');
   const revealedClues = getRevealedClues();
+
+  console.log('updateCluesDisplay called:', {
+    revealedCluesCount: gameState.revealedCluesCount,
+    revealedClues: revealedClues,
+    cluesContainerExists: !!cluesContainer
+  });
 
   // Clear existing clues
   cluesContainer.innerHTML = '';
@@ -137,11 +147,18 @@ function setUIState(state) {
  * @param {number} puzzleId - ID of puzzle to load
  */
 function initGame(puzzleId) {
+  console.log('initGame called with puzzleId:', puzzleId);
   gameState.currentPuzzleId = puzzleId;
   gameState.revealedCluesCount = 1;
   gameState.guesses = [];
   gameState.status = 'playing';
   gameState.startTime = Date.now();
+
+  console.log('gameState after init:', {
+    currentPuzzleId: gameState.currentPuzzleId,
+    revealedCluesCount: gameState.revealedCluesCount,
+    puzzlesLoaded: gameState.puzzles.length
+  });
 
   displayFeedback('', 'info');
   updateCluesDisplay();
@@ -262,15 +279,18 @@ function handleReplay() {
  */
 async function loadPuzzles() {
   try {
+    console.log('Attempting to load puzzles from data/puzzles.json');
     const response = await fetch('data/puzzles.json');
+    console.log('Fetch response:', response);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
     gameState.puzzles = data.puzzles;
-    console.log(`Loaded ${gameState.puzzles.length} puzzles`);
+    console.log(`Loaded ${gameState.puzzles.length} puzzles:`, gameState.puzzles);
   } catch (error) {
     console.error('Error loading puzzles:', error);
+    console.error('Make sure you are running this from a local web server, not file://');
     displayFeedback('Error loading puzzles. Please refresh the page.', 'error');
   }
 }
@@ -283,9 +303,15 @@ function setupEventListeners() {
   const nextPuzzleBtn = document.getElementById('next-puzzle-btn');
   const replayBtn = document.getElementById('replay-btn');
 
-  guessForm.addEventListener('submit', handleFormSubmit);
-  nextPuzzleBtn.addEventListener('click', handleNextPuzzle);
-  replayBtn.addEventListener('click', handleReplay);
+  if (guessForm) {
+    guessForm.addEventListener('submit', handleFormSubmit);
+  }
+  if (nextPuzzleBtn) {
+    nextPuzzleBtn.addEventListener('click', handleNextPuzzle);
+  }
+  if (replayBtn) {
+    replayBtn.addEventListener('click', handleReplay);
+  }
 }
 
 /**

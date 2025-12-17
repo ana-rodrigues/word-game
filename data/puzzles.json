@@ -2,63 +2,15 @@
   "puzzles": [
     {
       "id": 1,
-      "category": "fruits",
-      "clues": ["apple", "banana", "orange", "grape", "mango"],
-      "acceptedAnswers": ["fruits", "fruit"]
-    },
-    {
-      "id": 2,
       "category": "colors",
       "clues": ["red", "blue", "green", "yellow", "purple"],
       "acceptedAnswers": ["colors", "colour", "colours"]
     },
     {
-      "id": 3,
+      "id": 2,
       "category": "planets",
       "clues": ["mars", "venus", "jupiter", "saturn", "mercury"],
       "acceptedAnswers": ["planets", "planet"]
-    },
-    {
-      "id": 4,
-      "category": "programming languages",
-      "clues": ["python", "javascript", "java", "ruby", "go"],
-      "acceptedAnswers": ["programming languages", "programming language", "languages", "coding languages"]
-    },
-    {
-      "id": 5,
-      "category": "animals",
-      "clues": ["lion", "elephant", "giraffe", "zebra", "rhino"],
-      "acceptedAnswers": ["animals", "animal", "safari animals"]
-    },
-    {
-      "id": 6,
-      "category": "sports",
-      "clues": ["basketball", "tennis", "soccer", "baseball", "hockey"],
-      "acceptedAnswers": ["sports", "sport", "games"]
-    },
-    {
-      "id": 7,
-      "category": "countries",
-      "clues": ["france", "japan", "brazil", "egypt", "australia"],
-      "acceptedAnswers": ["countries", "country", "nations"]
-    },
-    {
-      "id": 8,
-      "category": "instruments",
-      "clues": ["guitar", "piano", "violin", "drums", "trumpet"],
-      "acceptedAnswers": ["instruments", "instrument", "musical instruments"]
-    },
-    {
-      "id": 9,
-      "category": "vegetables",
-      "clues": ["carrot", "broccoli", "spinach", "tomato", "cucumber"],
-      "acceptedAnswers": ["vegetables", "vegetable"]
-    },
-    {
-      "id": 10,
-      "category": "movies",
-      "clues": ["inception", "avatar", "titanic", "interstellar", "matrix"],
-      "acceptedAnswers": ["movies", "movie", "films", "film"]
     }
   ]
 }
