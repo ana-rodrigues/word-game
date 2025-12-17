@@ -1,9 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Web Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinpoint Game</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div id="app">
+        <h1 class="visually-hidden">Pinpoint</h1>
+
+        <main>
+            <section id="game-screen" class="screen active" data-state="playing">
+                <div class="game-container">
+                    
+                    <!-- Playing State Content -->
+                    <div class="playing-content">
+                        <div class="clue-section">
+                            <p class="clue-label">Clues revealed:</p>
+                            <div id="clues-container" class="clues-container">
+                                <!-- Clues will be dynamically inserted here -->
+                            </div>
+                            <p class="clue-counter">
+                                <span id="clue-count">1</span> / 5
+                            </p>
+                        </div>
+
+                        <div class="input-section">
+                            <form id="guess-form">
+                                <div class="form-group">
+                                    <label for="guess-input">Your guess:</label>
+                                    <input
+                                        type="text"
+                                        id="guess-input"
+                                        placeholder="Enter the category..."
+                                        autocomplete="off"
+                                        required
+                                    >
+                                </div>
+                                <button type="submit" id="submit-btn">Submit</button>
+                            </form>
+                        </div>
+
+                        <div id="feedback-message" class="feedback-message" role="alert" aria-live="polite">
+                            <!-- Feedback will be displayed here -->
+                        </div>
+
+                        <div class="guess-info">
+                            <p>Guesses made: <span id="guess-counter">0</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Results State Content -->
+                    <div class="results-content">
+                        <div id="result-status" class="result-status" role="alert">
+                            <!-- Result message (Won/Lost) -->
+                        </div>
+
+                        <div class="result-details">
+                            <div class="result-stat">
+                                <p class="stat-label">Category:</p>
+                                <p id="result-category" class="stat-value"></p>
+                            </div>
+                            <div class="result-stat">
+                                <p class="stat-label">Guesses:</p>
+                                <p id="result-guesses" class="stat-value"></p>
+                            </div>
+                            <div class="result-stat">
+                                <p class="stat-label">Clues revealed:</p>
+                                <p id="result-clues" class="stat-value"></p>
+                            </div>
+                        </div>
+
+                        <div class="all-clues">
+                            <p class="clues-label">All clues:</p>
+                            <ul id="all-clues-list">
+                                <!-- All clues will be listed here -->
+                            </ul>
+                        </div>
+
+                        <div class="results-actions">
+                            <button id="next-puzzle-btn" class="action-btn">Next Puzzle</button>
+                            <button id="replay-btn" class="action-btn">Replay</button>
+                        </div>
+                    </div>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/game.js"></script>
 </body>
 </html>

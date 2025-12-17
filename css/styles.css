@@ -1,4 +1,5 @@
 /* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,44 +13,16 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Header and Navigation */
-header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.visually-hidden {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
 }
 
-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav h1 {
-    font-size: 1.5rem;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #3498db;
-}
-
-/* Main Content */
 main {
     max-width: 1200px;
     margin: 2rem auto;
@@ -63,6 +36,8 @@ section {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+/* Typography */
 
 section h2 {
     color: #2c3e50;
@@ -112,16 +87,100 @@ button:hover {
     background-color: #2980b9;
 }
 
-/* Footer */
-footer {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
+/* Game State Management */
+
+/* Playing State */
+#game-screen[data-state="playing"] .playing-content {
+    display: block;
 }
 
-/* Responsive Design */
+#game-screen[data-state="playing"] .results-content {
+    display: none;
+}
+
+/* Results State */
+#game-screen[data-state="results"] .playing-content {
+    display: none;
+}
+
+#game-screen[data-state="results"] .results-content {
+    display: block;
+}
+
+/* Results Content Styling */
+.results-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.result-status {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.result-status.won {
+    color: #27ae60;
+    background-color: #d5f4e6;
+}
+
+.result-status.lost {
+    color: #e74c3c;
+    background-color: #fadbd8;
+}
+
+.result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.result-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    color: #3498db;
+}
+
+.all-clues {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.clues-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+#all-clues-list {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+#all-clues-list li {
+    padding: 0.5rem 0;
+    color: #555;
+}
+
+/* Breakpoints */
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
