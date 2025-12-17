@@ -8,7 +8,6 @@
 </head>
 <body>
     <div id="app">
-        <h1>Guess the category</h1>
 
         <main>
             <section id="game-screen" class="screen active" data-state="playing">
@@ -16,18 +15,33 @@
                     
                     <!-- Playing State Content -->
                     <div class="playing-content">
-                        <div class="clue-section">
-                            <div id="clues-container" class="clues-container">
-                                <!-- Clues will be dynamically inserted here -->
+
+                        <div class="clues-wrapper">
+                            <h1 class="label">Guess the category</h1>
+                            <div class="clue-section">
+                                <div id="clues-container" class="clues-container jumbo">
+                                    <!-- Clues will be dynamically inserted here -->
+                                </div>
                             </div>
                         </div>
 
                         <div class="input-section">
+
+                            <div class="game-stats">
+                                <span class="clue-counter label">
+                                    <span id="clue-count">1</span> / 5 guesses
+                                </span>
+                            </div>
+                            <div id="feedback-message" class="feedback-message label" role="alert" aria-live="polite">
+                                <!-- Feedback will be displayed here -->
+                            </div>  
+                            
                             <form id="guess-form">
                                 <div class="form-group">
-                                    <label for="guess-input" class="visually-hidden">Your guess</label>
+                                    <label for="guess-input " class="visually-hidden">Your guess</label>
                                     <input
                                         type="text"
+                                        class="jumbo"
                                         id="guess-input"
                                         placeholder="Your guess"
                                         autocomplete="off"
@@ -35,18 +49,8 @@
                                     >
                                 </div>
 
-                                <div class="game-stats">
-                                    <span class="clue-counter">
-                                        <span id="clue-count">1</span> / 5 guesses
-                                    </span>
-                                </div>
-                                
                                 <button type="submit" id="submit-btn">Submit</button>
                             </form>
-                        </div>
-
-                        <div id="feedback-message" class="feedback-message" role="alert" aria-live="polite">
-                            <!-- Feedback will be displayed here -->
                         </div>
                     </div>
 

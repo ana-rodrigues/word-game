@@ -1,3 +1,6 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 /* Reset and Base Styles */
 
 * {
@@ -6,11 +9,18 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+    background: linear-gradient(135deg, #f5f3f0 0%, #ede9e4 100%);
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    color: #2a2a2a;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .visually-hidden {
@@ -23,68 +33,190 @@ body {
   width: 1px;
 }
 
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-}
-
-section {
-    background: white;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+#app {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
 }
 
 /* Typography */
 
-section h2 {
-    color: #2c3e50;
-    margin-bottom: 1rem;
+
+.label {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    text-align: center;
 }
 
+.jumbo {
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #171616;
+    line-height: 1.2;
+    word-break: break-word;
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+main {
+    max-width: 480px;
+    margin: 0 auto;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    padding: 40px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    justify-content: space-between;
+}
+
+section {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.playing-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: 0;
+}
+
+.clues-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+/* Clue Section */
+.clue-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    flex: 1;
+    text-align: center;
+}
+
+.clues-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.clue-item {
+    font-size:40px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #171616;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+
 /* Form Styles */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 500px;
-}
-
-label {
-    font-weight: 600;
-    color: #2c3e50;
+    gap: 1.5rem;
 }
 
 input,
 textarea {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 1rem;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    word-break: break-word;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+input::placeholder {
+    color: #b8b8b8;
 }
 
 input:focus,
 textarea:focus {
     outline: none;
-    border-color: #3498db;
 }
 
 button {
-    padding: 0.75rem 1.5rem;
-    background-color: #3498db;
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    padding: 1rem;
+    background-color: #1a1a1a;
     color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+    border-radius: 50px;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100%;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #181818;
+}
+
+button:active {
+    background-color: #181818;
+}
+
+/* Feedback Message */
+.feedback-message {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    text-align: center;
+}
+
+.feedback-message.error {
+    color: #8b6b5f;
+}
+
+.feedback-message.success {
+    color: #6b8b7a;
+}
+
+.feedback-message.info {
+    color: #9a9a9a;
 }
 
 /* Game Stats */
@@ -92,15 +224,8 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
-    padding: 0.75rem;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.game-stats .clue-counter {
+    font-size: 0.875rem;
+    color: #9a9a9a;
     font-weight: 500;
 }
 
@@ -108,7 +233,7 @@ button:hover {
 
 /* Playing State */
 #game-screen[data-state="playing"] .playing-content {
-    display: block;
+    display: flex;
 }
 
 #game-screen[data-state="playing"] .results-content {
@@ -121,70 +246,84 @@ button:hover {
 }
 
 #game-screen[data-state="results"] .results-content {
-    display: block;
+    display: flex;
 }
 
 /* Results Content Styling */
 .results-content {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
+    text-align: center;
 }
 
 .result-status {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     text-align: center;
-    padding: 1rem;
-    border-radius: 4px;
+    color: #2a2a2a;
 }
 
 .result-status.won {
-    color: #27ae60;
-    background-color: #d5f4e6;
+    color: #6b8b7a;
 }
 
 .result-status.lost {
-    color: #e74c3c;
-    background-color: #fadbd8;
+    color: #8b6b5f;
 }
 
 .result-answer {
     text-align: center;
-    padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-radius: 4px;
 }
 
 .answer-label {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #9a9a9a;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
 }
 
 .answer-value {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #3498db;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2a2a2a;
+}
+
+.results-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.action-btn {
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+.action-btn:hover {
+    background-color: #000;
+}
+
+.action-btn:active {
+    background-color: #1a1a1a;
 }
 
 /* Breakpoints */
 
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    nav ul {
-        gap: 1rem;
-    }
-
     main {
-        padding: 0 1rem;
-    }
-
-    section {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
     }
 }
