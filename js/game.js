@@ -101,11 +101,13 @@ function displayFeedback(message, type = 'info') {
 }
 
 /**
- * Update guess counter display
+ * Update guess counter display (if element exists)
  */
 function updateGuessCounter() {
   const guessCounter = document.getElementById('guess-counter');
-  guessCounter.textContent = gameState.guesses.length;
+  if (guessCounter) {
+    guessCounter.textContent = gameState.guesses.length;
+  }
 }
 
 /**
@@ -209,18 +211,8 @@ function completeGame(won) {
   resultStatus.textContent = won ? '✓ You Won!' : '✗ Game Over';
   resultStatus.className = `result-status ${won ? 'won' : 'lost'}`;
 
+  // Display the correct answer
   document.getElementById('result-category').textContent = puzzle.category;
-  document.getElementById('result-guesses').textContent = gameState.guesses.length;
-  document.getElementById('result-clues').textContent = `${gameState.revealedCluesCount} / 5`;
-
-  // Display all clues
-  const allCluesList = document.getElementById('all-clues-list');
-  allCluesList.innerHTML = '';
-  puzzle.clues.forEach(clue => {
-    const li = document.createElement('li');
-    li.textContent = clue;
-    allCluesList.appendChild(li);
-  });
 
   // Switch to results state
   setUIState('results');

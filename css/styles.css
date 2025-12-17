@@ -87,6 +87,23 @@ button:hover {
     background-color: #2980b9;
 }
 
+/* Game Stats */
+.game-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.game-stats .clue-counter {
+    font-weight: 500;
+}
+
 /* Game State Management */
 
 /* Playing State */
@@ -132,51 +149,23 @@ button:hover {
     background-color: #fadbd8;
 }
 
-.result-details {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+.result-answer {
+    text-align: center;
+    padding: 1.5rem;
     background-color: #f9f9f9;
     border-radius: 4px;
 }
 
-.result-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.stat-label {
-    font-weight: 600;
-    color: #2c3e50;
-}
-
-.stat-value {
-    font-size: 1.1rem;
-    color: #3498db;
-}
-
-.all-clues {
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-}
-
-.clues-label {
-    font-weight: 600;
-    color: #2c3e50;
+.answer-label {
+    font-size: 0.9rem;
+    color: #666;
     margin-bottom: 0.5rem;
 }
 
-#all-clues-list {
-    list-style-position: inside;
-    padding-left: 1rem;
-}
-
-#all-clues-list li {
-    padding: 0.5rem 0;
-    color: #555;
+.answer-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3498db;
 }
 
 /* Breakpoints */

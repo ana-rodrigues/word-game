@@ -120,30 +120,55 @@ The `index.html` file uses semantic HTML5 markup with a clean, minimal structure
 - `aria-live="polite"`: Announces updates without interrupting
 - Used for: "Incorrect! Try again." or "Correct! You won!"
 
-#### Guess Counter
+#### Game Stats
 ```html
-<div class="guess-info">
-    <p>Guesses made: <span id="guess-counter">0</span></p>
+<div class="game-stats">
+    <span class="clue-counter">
+        <span id="clue-count">1</span> / 5 clues
+    </span>
 </div>
 ```
+
+**Purpose:** Display current clue count
 
 **JavaScript Interaction:**
-- `guess-counter` text content updated after each guess
+- `clue-count` updated when new clue revealed
 
-### 5. Results Actions
+**Layout:** Centered display below submit button
+
+**Note:** Guess count removed from UI (redundant with clue count), but still tracked internally for results screen and game logic
+
+### 5. Results Screen
 
 ```html
-<div class="results-actions">
-    <button id="next-puzzle-btn" class="action-btn">Next Puzzle</button>
-    <button id="replay-btn" class="action-btn">Replay</button>
+<div class="results-content">
+    <div id="result-status" class="result-status" role="alert">
+        <!-- Result message (Won/Lost) -->
+    </div>
+
+    <div class="result-answer">
+        <p class="answer-label">The answer was:</p>
+        <p id="result-category" class="answer-value"></p>
+    </div>
+
+    <div class="results-actions">
+        <button id="next-puzzle-btn" class="action-btn">Next Puzzle</button>
+        <button id="replay-btn" class="action-btn">Replay</button>
+    </div>
 </div>
 ```
 
-**Purpose:** Navigation buttons always visible for puzzle navigation
+**Purpose:** Display game result and navigation options
 
-**Buttons:**
-- `next-puzzle-btn`: Load next puzzle
-- `replay-btn`: Replay current puzzle
+**Content:**
+- Result status: "✓ You Won!" or "✗ Game Over"
+- Correct answer: The category name
+- Navigation buttons: Next Puzzle and Replay
+
+**JavaScript Interaction:**
+- `result-status` populated with win/loss message
+- `result-category` populated with correct answer
+- Buttons trigger puzzle navigation
 
 ### 6. Scripts
 ```html
@@ -200,17 +225,13 @@ setUIState('results');  // Show results
 |---|---|
 | `game-screen` | Main game container (holds data-state) |
 | `clues-container` | Container for clue elements |
-| `clue-count` | Current clue count display |
+| `clue-count` | Current clue count display (playing state) |
 | `guess-form` | Form for submission |
 | `guess-input` | Player input field |
 | `submit-btn` | Submit button |
 | `feedback-message` | Feedback display during gameplay |
-| `guess-counter` | Total guesses counter |
 | `result-status` | Result message (Won/Lost) |
-| `result-category` | Correct category display |
-| `result-guesses` | Guesses count in results |
-| `result-clues` | Clues count in results |
-| `all-clues-list` | List of all clues |
+| `result-category` | Correct answer display |
 | `next-puzzle-btn` | Next puzzle button |
 | `replay-btn` | Replay button |
 
