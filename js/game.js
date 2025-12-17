@@ -172,7 +172,7 @@ function processGuess(guess) {
   // Check if answer is correct
   if (validateAnswer(guess, puzzle.acceptedAnswers)) {
     gameState.status = 'won';
-    displayFeedback('Correct! You won!', 'success');
+    displayFeedback('You won!', 'success');
     completeGame(true);
     return;
   }
@@ -182,7 +182,7 @@ function processGuess(guess) {
   if (gameState.guesses.length >= 5) {
     // Player loses after 5 incorrect guesses
     gameState.status = 'lost';
-    displayFeedback('Game Over! Maximum guesses reached.', 'error');
+    displayFeedback('Game over. Maximum guesses reached.', 'error');
     completeGame(false);
   } else {
     // Reveal next clue if available
@@ -208,7 +208,7 @@ function completeGame(won) {
 
   // Populate results screen
   const resultStatus = document.getElementById('result-status');
-  resultStatus.textContent = won ? '✓ You Won!' : '✗ Game Over';
+  resultStatus.textContent = won ? 'You won!' : 'Game over';
   resultStatus.className = `result-status ${won ? 'won' : 'lost'}`;
 
   // Display the correct answer
