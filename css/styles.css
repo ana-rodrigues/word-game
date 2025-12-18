@@ -9,11 +9,16 @@
     box-sizing: border-box;
 }
 
+:root {
+    color-scheme: light;
+}
+
 html {
     height: 100vh;
     background: linear-gradient(180deg, #f0eeeb 0%, #e9e6e4 100%) fixed;
     background-attachment: fixed;
     font-size: 14px;
+    color-scheme: light;
 }
 
 body {
