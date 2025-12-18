@@ -11,7 +11,7 @@
 
 html {
     height: 100%;
-    background: linear-gradient(135deg, #f5f3f0 0%, #efece8 100%);
+    background: linear-gradient(180deg, #f0eeeb 0%, #e9e6e4 100%);
 }
 
 body {
@@ -21,6 +21,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding: 16px;
 }
 
 .visually-hidden {
@@ -38,38 +39,21 @@ body {
     flex-direction: column;
     flex: 1;
     height: 100%;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
 }
 
-/* Typography */
-
-
-.label {
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #9a9a9a;
-    text-align: center;
-}
-
-.jumbo {
-    font-size: 40px;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    color: #171616;
-    line-height: 1.2;
-    word-break: break-word;
-    text-align: center;
-    line-height: 1.2;
+.header {
+    padding-bottom: 16px;
 }
 
 main {
     min-width: 480px;
     max-width: 480px;
     margin: 0 auto;
+    padding: 16px 16px 40px 16px;
     border-left: 1px solid white;
     border-right: 1px solid white;
-    padding: 40px 16px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -99,8 +83,33 @@ section {
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    gap: 0;
+    gap: 32px;
+    opacity: 0;
 }
+
+/* Typography */
+
+.label {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    text-align: center;
+}
+
+.jumbo {
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #171616;
+    line-height: 1.2;
+    word-break: break-word;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Clue Section */
 
 .clues-wrapper {
     display: flex;
@@ -109,19 +118,15 @@ section {
     justify-content: center;
 }
 
-.input-section {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-}
-
-/* Clue Section */
 .clue-section {
     display: flex;
     flex-direction: column;
     justify-content: start;
     flex: 1;
     text-align: center;
+    border: 1px solid white;
+    border-radius: 16px;
+    padding: 16px;
 }
 
 .clues-container {
@@ -139,10 +144,30 @@ section {
     color: #171616;
     line-height: 1.2;
     word-break: break-word;
+    animation: clueEnter 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes clueEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
 /* Form Styles */
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
 .form-group {
     display: flex;
     flex-direction: column;
@@ -203,7 +228,7 @@ textarea:focus {
 /* Feedback Message */
 .feedback-message {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #9a9a9a;
@@ -242,9 +267,14 @@ textarea:focus {
 /* Playing State */
 #game-screen[data-state="playing"] .playing-content {
     display: flex;
+    animation: screenFadeIn 0.6s ease-out forwards;
 }
 
 #game-screen[data-state="playing"] .results-content {
+    display: none;
+}
+
+#game-screen[data-state="playing"] .completion-content {
     display: none;
 }
 
@@ -255,6 +285,35 @@ textarea:focus {
 
 #game-screen[data-state="results"] .results-content {
     display: flex;
+    animation: screenFadeIn 0.6s ease-out forwards;
+}
+
+#game-screen[data-state="results"] .completion-content {
+    display: none;
+}
+
+/* Completion State */
+#game-screen[data-state="completed"] .playing-content {
+    display: none;
+}
+
+#game-screen[data-state="completed"] .results-content {
+    display: none;
+}
+
+#game-screen[data-state="completed"] .completion-content {
+    display: flex;
+    animation: screenFadeIn 0.6s ease-out forwards;
+}
+
+/* Screen Fade In Animation */
+@keyframes screenFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Results Content Styling */
@@ -264,6 +323,7 @@ textarea:focus {
     justify-content: space-between;
     flex: 1;
     gap: 0;
+    opacity: 0;
 }
 
 .result-status {
@@ -298,10 +358,34 @@ textarea:focus {
     flex-shrink: 0;
 }
 
+/* Completion Content Styling */
+.completion-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    gap: 2rem;
+    opacity: 0;
+}
+
+.completion-message {
+    text-align: center;
+}
+
+.completion-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
 /* Breakpoints */
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     main {
-        padding: 2rem 1.5rem;
+        min-width: none;
+        max-width: 320px;
+        width: 100%;
     }
 }

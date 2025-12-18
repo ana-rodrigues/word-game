@@ -83,17 +83,17 @@ function updateCluesDisplay() {
     cluesContainerExists: !!cluesContainer
   });
 
-  // Clear existing clues
-  cluesContainer.innerHTML = '';
+  // Get current number of clues in DOM
+  const currentClueCount = cluesContainer.children.length;
 
-  // Add clue elements
-  revealedClues.forEach((clue, index) => {
+  // Only add new clues that aren't already displayed
+  for (let i = currentClueCount; i < revealedClues.length; i++) {
     const clueElement = document.createElement('div');
     clueElement.className = 'clue-item';
-    clueElement.textContent = clue;
-    clueElement.setAttribute('data-clue-index', index);
+    clueElement.textContent = revealedClues[i];
+    clueElement.setAttribute('data-clue-index', i);
     cluesContainer.appendChild(clueElement);
-  });
+  }
 
   // Update clue counter
   clueCount.textContent = gameState.revealedCluesCount;
@@ -159,6 +159,12 @@ function initGame(puzzleId) {
     revealedCluesCount: gameState.revealedCluesCount,
     puzzlesLoaded: gameState.puzzles.length
   });
+
+  // Clear clues container for new game
+  const cluesContainer = document.getElementById('clues-container');
+  if (cluesContainer) {
+    cluesContainer.innerHTML = '';
+  }
 
   displayFeedback('', 'info');
   updateCluesDisplay();
@@ -258,8 +264,8 @@ function handleNextPuzzle() {
   if (nextPuzzleId <= gameState.puzzles.length) {
     initGame(nextPuzzleId);
   } else {
-    // No more puzzles - loop back to first
-    initGame(1);
+    // No more puzzles - show completion screen
+    setUIState('completed');
   }
 }
 
@@ -302,6 +308,7 @@ function setupEventListeners() {
   const guessForm = document.getElementById('guess-form');
   const nextPuzzleBtn = document.getElementById('next-puzzle-btn');
   const replayBtn = document.getElementById('replay-btn');
+  const restartBtn = document.getElementById('restart-btn');
 
   if (guessForm) {
     guessForm.addEventListener('submit', handleFormSubmit);
@@ -311,6 +318,9 @@ function setupEventListeners() {
   }
   if (replayBtn) {
     replayBtn.addEventListener('click', handleReplay);
+  }
+  if (restartBtn) {
+    restartBtn.addEventListener('click', () => initGame(1));
   }
 }
 
