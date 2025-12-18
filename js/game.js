@@ -97,25 +97,6 @@ function updateCluesDisplay() {
 
   // Update clue counter
   clueCount.textContent = gameState.revealedCluesCount;
-
-  // Scroll to the latest clue (important for mobile when keyboard is open)
-  scrollToLatestClue();
-}
-
-/**
- * Scroll to the latest clue in the container
- */
-function scrollToLatestClue() {
-  const cluesContainer = document.getElementById('clues-container');
-  if (!cluesContainer) return;
-
-  const lastClue = cluesContainer.lastElementChild;
-  if (lastClue) {
-    // Use setTimeout to ensure the clue is rendered before scrolling
-    setTimeout(() => {
-      lastClue.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }, 100);
-  }
 }
 
 /**
@@ -346,7 +327,6 @@ function setupEventListeners() {
   const guessForm = document.getElementById('guess-form');
   const nextPuzzleBtn = document.getElementById('next-puzzle-btn');
   const replayBtn = document.getElementById('replay-btn');
-  const guessInput = document.getElementById('guess-input');
 
   if (guessForm) {
     guessForm.addEventListener('submit', handleFormSubmit);
@@ -356,16 +336,6 @@ function setupEventListeners() {
   }
   if (replayBtn) {
     replayBtn.addEventListener('click', handleReplay);
-  }
-  
-  // Scroll to latest clue when input is focused (mobile keyboard opens)
-  if (guessInput) {
-    guessInput.addEventListener('focus', () => {
-      // Delay to allow keyboard to open and viewport to resize
-      setTimeout(() => {
-        scrollToLatestClue();
-      }, 300);
-    });
   }
 }
 
