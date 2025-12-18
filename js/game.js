@@ -266,6 +266,25 @@ function handleNextPuzzle() {
   } else {
     // No more puzzles - show completion screen
     setUIState('completed');
+    createConfetti();
+  }
+}
+
+/**
+ * Create confetti animation
+ */
+function createConfetti() {
+  const confettiContainer = document.getElementById('confetti-container');
+  if (!confettiContainer) return;
+
+  // Clear any existing confetti
+  confettiContainer.innerHTML = '';
+
+  // Create 20 confetti pieces
+  for (let i = 0; i < 20; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confettiContainer.appendChild(confetti);
   }
 }
 
@@ -308,7 +327,6 @@ function setupEventListeners() {
   const guessForm = document.getElementById('guess-form');
   const nextPuzzleBtn = document.getElementById('next-puzzle-btn');
   const replayBtn = document.getElementById('replay-btn');
-  const restartBtn = document.getElementById('restart-btn');
 
   if (guessForm) {
     guessForm.addEventListener('submit', handleFormSubmit);
@@ -318,9 +336,6 @@ function setupEventListeners() {
   }
   if (replayBtn) {
     replayBtn.addEventListener('click', handleReplay);
-  }
-  if (restartBtn) {
-    restartBtn.addEventListener('click', () => initGame(1));
   }
 }
 
