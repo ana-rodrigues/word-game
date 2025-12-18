@@ -97,6 +97,14 @@ function updateCluesDisplay() {
 
   // Update clue counter
   clueCount.textContent = gameState.revealedCluesCount;
+  
+  // Ensure input stays visible after clue is added
+  setTimeout(() => {
+    const guessInput = document.getElementById('guess-input');
+    if (guessInput && document.activeElement === guessInput) {
+      guessInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, 100);
 }
 
 /**
