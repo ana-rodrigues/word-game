@@ -130,6 +130,7 @@ section {
     border: 1px solid white;
     border-radius: 16px;
     padding: 16px;
+    overflow: hidden;
 }
 
 .clues-container {
@@ -138,6 +139,9 @@ section {
     gap: 1.5rem;
     justify-content: center;
     padding: 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
 }
 
 .clue-item {
@@ -147,6 +151,7 @@ section {
     color: #171616;
     line-height: 1.2;
     word-break: break-word;
+    text-transform: uppercase;
     animation: clueEnter 0.4s ease-out forwards;
     opacity: 0;
 }
@@ -256,6 +261,7 @@ textarea:focus {
     justify-content: center;
     align-items: center;
     font-size: 40px;
+    text-transform: uppercase;
     color: #9a9a9a;
     font-weight: 400;
 }
@@ -334,6 +340,7 @@ textarea:focus {
     font-weight: 400;
     letter-spacing: -0.02em;
     text-align: center;
+    text-transform: uppercase;
     color: #171616;
     line-height: 1.2;
 }
@@ -437,13 +444,35 @@ textarea:focus {
 
 @media (max-width: 520px) {
 
+    /* Mobile viewport fixes */
+    html {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        background-attachment: fixed;
+    }
+
+    body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        overflow: hidden;
+        position: relative;
+    }
 
     #app {
         padding: 0px 16px;
+        min-height: 0;
+        overflow: hidden;
     }
 
     main {
         padding: 16px 16px 32px 16px;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    section {
+        min-height: 0;
+        overflow: hidden;
     }
 
     .clue-section {
