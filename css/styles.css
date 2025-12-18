@@ -320,10 +320,11 @@ textarea:focus {
 .results-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     flex: 1;
-    gap: 0;
+    gap: 40px;
     opacity: 0;
+    height: 100%;
 }
 
 .result-status {
@@ -435,12 +436,26 @@ textarea:focus {
 @media (max-width: 520px) {
 
 
+    html {
+        height: auto;
+        min-height: 100%;
+    }
+
+    body {
+        height: auto;
+        min-height: 100%;
+    }
+
     #app {
         padding: 0px 16px;
+        height: auto;
+        min-height: 100%;
     }
 
     main {
         padding: 16px 16px 32px 16px;
+        height: auto;
+        min-height: 100%;
     }
 
     .clue-section {
