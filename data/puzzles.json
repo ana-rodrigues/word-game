@@ -2,15 +2,21 @@
   "puzzles": [
     {
       "id": 1,
-      "category": "colors",
-      "clues": ["red", "blue", "green", "yellow", "purple"],
-      "acceptedAnswers": ["colors", "colour", "colours"]
+      "category": "things that come after 'behind'",
+      "clues": ["schedule", "stage", "camera", "scenes", "closed doors"],
+      "acceptedAnswers": ["behind", "things that come after behind", "things that are 'behind'"]
     },
-    {
+        {
       "id": 2,
-      "category": "planets",
-      "clues": ["mars", "venus", "jupiter", "saturn", "mercury"],
-      "acceptedAnswers": ["planets", "planet"]
+      "category": "things that come after 'the' ",
+      "clues": ["great wall", "northern lights", "great depression", "great gatsby", "ice age"],
+      "acceptedAnswers": ["the", "after the", "things that come after the"]
+    },
+        {
+      "id": 3,
+      "category": "painting",
+      "clues": ["oil", "pastel", "easel", "gallery", "frame"],
+      "acceptedAnswers": ["painting", "paintings"]
     }
   ]
 }
